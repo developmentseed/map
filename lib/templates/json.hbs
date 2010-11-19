@@ -1,0 +1,145 @@
+{
+    "map": {
+        "theme": "/css/openlayers.css",
+        "layers": [
+        {{#layers}}
+        {
+            {{#stylewriter}}
+            "_type": "OpenLayers.Layer.StyleWriter",
+            "_value": [
+              "{{../title}}",
+              "{{url_stylewriter}}",
+              {
+                "projection": {
+                  "_type": "OpenLayers.Projection",
+                  "_value": ["EPSG:900913"]
+                },
+                "maxExtent": {
+                    "_type": "OpenLayers.Bounds",
+                    "_value": [
+                        -20037508.34,
+                        -20037508.34,
+                        20037508.34,
+                        20037508.34]
+                },
+                "type": "{{../extension}}",
+                "symbolizer": "{{symbolizer}}",
+                "mapfile": "{{url_mml}}",
+                {{#value_field}}"value_field": "{{.}}",{{/value_field}}
+                {{#name_field}}"name_field": "{{.}}",{{/name_field}}
+                {{#join_field}}"join_field": "{{.}}",{{/join_field}}
+                {{#keymap}}"keymap": {{{.}}},{{/keymap}}
+            {{/stylewriter}}
+            {{#mapbox}}
+            "_type": "OpenLayers.Layer.MapBox",
+            "_value": [
+              "{{../title}}",
+              {
+                "projection": {
+                  "_type": "OpenLayers.Projection",
+                  "_value": ["EPSG:900913"]
+                },
+                "maxExtent": {
+                    "_type": "OpenLayers.Bounds",
+                    "_value": [
+                        -20037508.34,
+                        -20037508.34,
+                        20037508.34,
+                        20037508.34]
+                },
+                "type": "{{../extension}}",
+                "serverResolutions": [
+                    156543.0339,
+                    78271.51695,
+                    39135.758475,
+                    19567.8792375,
+                    9783.93961875,
+                    4891.96980938,
+                    2445.98490469,
+                    1222.99245234,
+                    611.496226172,
+                    305.748113086,
+                    152.874056543,
+                    76.4370282715,
+                    38.2185141357,
+                    19.1092570679,
+                    9.55462853394,
+                    4.77731426697,
+                    2.38865713348,
+                    1.19432856674,
+                    0.597164283371
+                ],
+                "layername": "{{../layername}}",
+                "attribution": "<a href=\"http://mapbox.com/\" class=\"mapbox-logo\">Mapbox.com</a> | <a href=\"http://mapbox.com/tos\">Terms of Use</a> | Some data <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a> <a href=\"http://openstreetmap.org\">OpenStreetMap</a> & contributors",
+                "isBaseLayer": "{{../baselayer}}",
+                {{#resolutions}}"resolutions": [{{.}}],{{/resolutions}}
+            {{/mapbox}}
+                {{#legend}}"legend": "{{{.}}}",{{/legend}}
+                {{#visibility}}"visibility": {{.}},{{/visibility}}
+                "minzoom": 5
+              }
+            ]
+        {{^last}}
+        },
+        {{/last}}
+        {{#last}}
+        }
+        {{/last}}
+        {{/layers}}
+        ],
+        "maxExtent": {
+            "_type": "OpenLayers.Bounds",
+            "_value": [-20037508.34, -20037508.34, 20037508.34, 20037508.34]
+        },
+        "restrictedExtent": {
+            "_type": "OpenLayers.Bounds",
+            "_value": [5835415.364, 2521769.802, 9217843.346, 5543749.296]
+        },
+        "maxResolution": 1.40625,
+        "projection": {
+            "_type": "OpenLayers.Projection",
+            "_value": ["EPSG:900913"]
+        },
+        "displayProjection": {
+            "_type": "OpenLayers.Projection",
+            "_value": ["EPSG:900913"]
+        },
+        "units": "m",
+        "controls": [
+        {
+            "_type": "OpenLayers.Control.Navigation",
+            "_value": [{
+                "zoomWheelEnabled": false
+            }]
+        },
+        {
+            "_type": "OpenLayers.Control.Attribution",
+            "_value": [""]
+        },
+        {
+            "_type": "OpenLayers.Control.ZoomPanel",
+            "_value": [""]
+        },
+        {
+            "_type": "OpenLayers.Control.StyleWriterInteraction",
+            "_value": [""]
+        }
+        ]
+    },
+    "externals": [
+        {
+            "_type": "OpenLayersPlusLegend",
+            "_value": ["#map-fill"]
+        },
+        {
+            "_type": "OpenLayersPlusBlockswitcher",
+            "_value": ["#map-fill", "checkbox"]
+        },
+        {{#zoomonload}}
+        {
+            "_type": "OpenLayersWaxZoomOnLoad",
+            "_value": ["#map-fill", {{lon}}, {{lat}}, {{zoom}}]
+        }
+        {{/zoomonload}}
+    ]
+}
