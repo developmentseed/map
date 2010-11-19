@@ -1,25 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><!DOCTYPE Map> 
-<Map background-color="transparent" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over"> 
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE Map>
+<Map background-color="transparent" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs +over">
 
-<MetaWriter 
-    name="meta1" 
+<MetaWriter
+    name="meta1"
     only-nonempty="false"
-    type="json" 
-    file="[tile_dir]/[z]/[x]/[y].json" /> 
+    type="json"
+    file="[tile_dir]/[z]/[x]/[y].json" />
 
 <Stylesheet>
 {{#rules}}
 {{../template .}}
 {{/rules}}
-</Stylesheet> 
+</Stylesheet>
 
 {{#layers}}
-<Layer id="{{id}}" name="data" srs="+proj=latlong +datum=WGS84"> 
-<Datasource> 
-    <Parameter name="file">{{file}}</Parameter> 
-    <Parameter name="type">{{type}}</Parameter> 
-    <Parameter name="layer">{{layer}}</Parameter> 
-</Datasource> 
+<Layer id="{{id}}" name="{{name}}" srs="+proj=latlong +datum=WGS84">
+<Datasource>
+    {{#file}}<Parameter name="file">{{.}}</Parameter>{{/file}}
+    {{#type}}<Parameter name="type">{{.}}</Parameter>{{/type}}
+    {{#layer}}<Parameter name="layer">{{.}}</Parameter>{{/layer}}
+</Datasource>
 </Layer>
 {{/layers}}
 </Map>
