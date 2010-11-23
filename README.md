@@ -5,9 +5,9 @@ Map provides an API for generating the various endpoints needed to generate
 [StyleWriter](http://github.com/developmentseed/stylewriter) maps in the
 context of a web app. It provides helpers to prop up endpoints for:
 
-1. OL wax JSON (currently unreleased! bug [tmcw](http://github.com/tmcw)) for
-  configuring OpenLayers maps with proper interactive data when using polygon
-  based TileLive layers.
+1. [OL wax](https://github.com/developmentseed/openlayers_plus/blob/js/openlayers_wax.js))
+  JSON for configuring OpenLayers maps with proper interactive data when using
+  polygon based TileLive layers.
 2. TileLive MML styles with Cascadenik style rules based on the data in your
   webapp.
 3. GeoJSON output of data in your webapp that can be used by TileLive.
@@ -25,6 +25,7 @@ Requirements
 Client side:
 
 - [openlayers](https://github.com/developmentseed/openlayers_slim)
+- [openlayers_plus](https://github.com/developmentseed/openlayers_plus/tree/js)
 - [stylewriter-client](http://github.com/developmentseed/stylewriter-client)
 
 Using map
